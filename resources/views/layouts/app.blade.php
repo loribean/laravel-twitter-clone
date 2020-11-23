@@ -17,9 +17,12 @@
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
     <div id="app">
-        <section class="px-8">
+        <section class="px-8 py-4 mb-6">
        <header class="container mx-auto">
-           <h1>Tweety</h1>
+           <h1>
+               <img src="/images/logo.svg"
+               alt="">
+           </h1>
        </header>
     </section>
 
