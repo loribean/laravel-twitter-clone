@@ -20,14 +20,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Auth::routes();
+
+Route::get('/home', [\App\Http\Controllers\TweetsController::class, 'index'])->name('home');
+
 Auth::routes();
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware('auth')->group(function(){
+    Route::post('/tweets', [\App\Http\Controllers\TweetsController::class, 'store']);
 
-Auth::routes();
+    Route::get('/tweets', [\App\Http\Controllers\TweetsController::class, 'index'])->name('home');
+    
+});
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profiles/{user}',[\App\Http\Controllers\ProfilesController::class, 'show'])->name('profile');
 
 
-Route::post('/tweets', [\App\Http\Controllers\TweetsController::class, 'store']);
+
+
